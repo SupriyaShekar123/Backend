@@ -1,26 +1,53 @@
 'use strict';
 
 module.exports = {
-  up: (queryInterface, Sequelize) => {
-    /*
-      Add altering commands here.
-      Return a promise to correctly handle asynchronicity.
+    up: async(queryInterface, Sequelize) => {
+        return await queryInterface.bulkInsert(
+            "todoItems", [{
+                    task: "Finish Reports",
+                    important: false,
+                    deadline: "20/3/2020",
+                    createdAt: new Date(),
+                    updatedAt: new Date(),
+                    todolistId: 1
+                },
+                {
+                    task: "Plan Birthday",
+                    important: true,
+                    deadline: "20/3/2020",
+                    createdAt: new Date(),
+                    updatedAt: new Date(),
+                    todolistId: 2
+                },
+                {
+                    task: "Go swimming",
+                    important: false,
+                    deadline: "20/3/2020",
+                    createdAt: new Date(),
+                    updatedAt: new Date(),
+                    todolistId: 2
+                },
+                {
+                    task: "Practice freekicks",
+                    important: false,
+                    deadline: "20/3/2020",
+                    createdAt: new Date(),
+                    updatedAt: new Date(),
+                    todolistId: 3
+                },
+                {
+                    task: "Score 60+ goals",
+                    important: true,
+                    deadline: "20/3/2020",
+                    createdAt: new Date(),
+                    updatedAt: new Date(),
+                    todolistId: 3
+                }
+            ], {}
+        );
+    },
 
-      Example:
-      return queryInterface.bulkInsert('People', [{
-        name: 'John Doe',
-        isBetaMember: false
-      }], {});
-    */
-  },
-
-  down: (queryInterface, Sequelize) => {
-    /*
-      Add reverting commands here.
-      Return a promise to correctly handle asynchronicity.
-
-      Example:
-      return queryInterface.bulkDelete('People', null, {});
-    */
-  }
+    down: async(queryInterface, Sequelize) => {
+        return await queryInterface.bulkDelete("todoItems", null, {});
+    }
 };
