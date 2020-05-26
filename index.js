@@ -1,8 +1,10 @@
 const express = require("express");
+const cors = require("cors");
+app.use(cors());
 const User = require("./models").user;
 const toDoList = require("./models").todolists;
 const app = express();
-const PORT = 4000;
+const PORT = process.env.PORT || 4000;
 
 app.get("/users", async(req, res) => {
     const users = await User.findAll();
